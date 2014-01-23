@@ -1,0 +1,457 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0417D5221789FE5E00C79BE1 /* PathfindingDepthFirstSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0417D5211789FE0000C79BE1 /* PathfindingDepthFirstSearch.m */; };
+		043CB95317861874009FAB0C /* PathfindingGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB95217861874009FAB0C /* PathfindingGridCell.m */; };
+		043CB95817861E91009FAB0C /* PathfindingMapEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB9571786199D009FAB0C /* PathfindingMapEdge.m */; };
+		043CB95917861E91009FAB0C /* PathfindingMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB95517861964009FAB0C /* PathfindingMapNode.m */; };
+		0441AD8D177FAA58004A4BE5 /* PathfindingCharacterManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441AD8C177FA9DD004A4BE5 /* PathfindingCharacterManager.m */; };
+		0441AD91177FABBF004A4BE5 /* PathfindingGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441AD90177FAB9D004A4BE5 /* PathfindingGrid.m */; };
+		0474D31A176B9A480008FCD2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0474D319176B9A480008FCD2 /* Foundation.framework */; };
+		0474D31C176B9A480008FCD2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0474D31B176B9A480008FCD2 /* CoreGraphics.framework */; };
+		0474D31E176B9A480008FCD2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0474D31D176B9A480008FCD2 /* UIKit.framework */; };
+		0474D320176B9A480008FCD2 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0474D31F176B9A480008FCD2 /* SpriteKit.framework */; };
+		0474D326176B9A480008FCD2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0474D324176B9A480008FCD2 /* InfoPlist.strings */; };
+		0474D328176B9A480008FCD2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474D327176B9A480008FCD2 /* main.m */; };
+		0474D32C176B9A480008FCD2 /* PathfindingAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474D32B176B9A480008FCD2 /* PathfindingAppDelegate.m */; };
+		0474D32F176B9A480008FCD2 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0474D32D176B9A480008FCD2 /* Main_iPhone.storyboard */; };
+		0474D332176B9A480008FCD2 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0474D330176B9A480008FCD2 /* Main_iPad.storyboard */; };
+		0474D335176B9A480008FCD2 /* PathfindingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474D334176B9A480008FCD2 /* PathfindingViewController.m */; };
+		0474D338176B9A480008FCD2 /* PathfindingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474D337176B9A480008FCD2 /* PathfindingScene.m */; };
+		0474D33C176B9A480008FCD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0474D33B176B9A480008FCD2 /* Images.xcassets */; };
+		0474D35D176BE2160008FCD2 /* PathfindingBaseCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474D359176BDA7D0008FCD2 /* PathfindingBaseCharacter.m */; };
+		047D4303178BB6D300FC7262 /* PathfindingBreadthFirstSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D4302178BB6D300FC7262 /* PathfindingBreadthFirstSearch.m */; };
+		04C8970F17A5C0E0004F4E99 /* PathfindingDijkstraSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C8970E17A5C0E0004F4E99 /* PathfindingDijkstraSearch.m */; };
+		04C8971217A5E1C9004F4E99 /* PathfindingAStarSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C8971117A5E1C9004F4E99 /* PathfindingAStarSearch.m */; };
+		04DF0CAC17960E800065B4EE /* PathfindingMapA.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04DF0CAB17960CD40065B4EE /* PathfindingMapA.plist */; };
+		04DF0CAE179628E20065B4EE /* PathfindingMapB.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04DF0CAD179628E20065B4EE /* PathfindingMapB.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0417D51F1789FC4D00C79BE1 /* PathfindingPathfinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingPathfinder.h; path = Grid/Pathfinding/PathfindingPathfinder.h; sourceTree = "<group>"; };
+		0417D5201789FE0000C79BE1 /* PathfindingDepthFirstSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingDepthFirstSearch.h; path = Grid/Pathfinding/PathfindingDepthFirstSearch.h; sourceTree = "<group>"; };
+		0417D5211789FE0000C79BE1 /* PathfindingDepthFirstSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PathfindingDepthFirstSearch.m; path = Grid/Pathfinding/PathfindingDepthFirstSearch.m; sourceTree = "<group>"; };
+		043CB95117861874009FAB0C /* PathfindingGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathfindingGridCell.h; path = Grid/PathfindingGridCell.h; sourceTree = "<group>"; };
+		043CB95217861874009FAB0C /* PathfindingGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathfindingGridCell.m; path = Grid/PathfindingGridCell.m; sourceTree = "<group>"; };
+		043CB95417861964009FAB0C /* PathfindingMapNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingMapNode.h; path = Grid/PathfindingMapNode.h; sourceTree = "<group>"; };
+		043CB95517861964009FAB0C /* PathfindingMapNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PathfindingMapNode.m; path = Grid/PathfindingMapNode.m; sourceTree = "<group>"; };
+		043CB9561786199D009FAB0C /* PathfindingMapEdge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingMapEdge.h; path = Grid/PathfindingMapEdge.h; sourceTree = "<group>"; };
+		043CB9571786199D009FAB0C /* PathfindingMapEdge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PathfindingMapEdge.m; path = Grid/PathfindingMapEdge.m; sourceTree = "<group>"; };
+		0441AD8B177FA9DD004A4BE5 /* PathfindingCharacterManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingCharacterManager.h; path = Characters/PathfindingCharacterManager.h; sourceTree = "<group>"; };
+		0441AD8C177FA9DD004A4BE5 /* PathfindingCharacterManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PathfindingCharacterManager.m; path = Characters/PathfindingCharacterManager.m; sourceTree = "<group>"; };
+		0441AD8F177FAB9D004A4BE5 /* PathfindingGrid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingGrid.h; path = Grid/PathfindingGrid.h; sourceTree = "<group>"; };
+		0441AD90177FAB9D004A4BE5 /* PathfindingGrid.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PathfindingGrid.m; path = Grid/PathfindingGrid.m; sourceTree = "<group>"; };
+		0474D316176B9A480008FCD2 /* Pathfinding.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pathfinding.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0474D319176B9A480008FCD2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0474D31B176B9A480008FCD2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0474D31D176B9A480008FCD2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0474D31F176B9A480008FCD2 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		0474D323176B9A480008FCD2 /* Pathfinding-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Pathfinding-Info.plist"; sourceTree = "<group>"; };
+		0474D325176B9A480008FCD2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0474D327176B9A480008FCD2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0474D329176B9A480008FCD2 /* Pathfinding-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pathfinding-Prefix.pch"; sourceTree = "<group>"; };
+		0474D32A176B9A480008FCD2 /* PathfindingAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathfindingAppDelegate.h; sourceTree = "<group>"; };
+		0474D32B176B9A480008FCD2 /* PathfindingAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathfindingAppDelegate.m; sourceTree = "<group>"; };
+		0474D32E176B9A480008FCD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		0474D331176B9A480008FCD2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		0474D333176B9A480008FCD2 /* PathfindingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathfindingViewController.h; sourceTree = "<group>"; };
+		0474D334176B9A480008FCD2 /* PathfindingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathfindingViewController.m; sourceTree = "<group>"; };
+		0474D336176B9A480008FCD2 /* PathfindingScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PathfindingScene.h; sourceTree = "<group>"; };
+		0474D337176B9A480008FCD2 /* PathfindingScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathfindingScene.m; sourceTree = "<group>"; };
+		0474D33B176B9A480008FCD2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0474D342176B9A480008FCD2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0474D358176BDA7D0008FCD2 /* PathfindingBaseCharacter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingBaseCharacter.h; path = Characters/PathfindingBaseCharacter.h; sourceTree = "<group>"; };
+		0474D359176BDA7D0008FCD2 /* PathfindingBaseCharacter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PathfindingBaseCharacter.m; path = Characters/PathfindingBaseCharacter.m; sourceTree = "<group>"; };
+		047D4301178BB6D300FC7262 /* PathfindingBreadthFirstSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathfindingBreadthFirstSearch.h; path = Grid/Pathfinding/PathfindingBreadthFirstSearch.h; sourceTree = "<group>"; };
+		047D4302178BB6D300FC7262 /* PathfindingBreadthFirstSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathfindingBreadthFirstSearch.m; path = Grid/Pathfinding/PathfindingBreadthFirstSearch.m; sourceTree = "<group>"; };
+		04C8970D17A5C0E0004F4E99 /* PathfindingDijkstraSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathfindingDijkstraSearch.h; path = Grid/Pathfinding/PathfindingDijkstraSearch.h; sourceTree = "<group>"; };
+		04C8970E17A5C0E0004F4E99 /* PathfindingDijkstraSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathfindingDijkstraSearch.m; path = Grid/Pathfinding/PathfindingDijkstraSearch.m; sourceTree = "<group>"; };
+		04C8971017A5E1C9004F4E99 /* PathfindingAStarSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathfindingAStarSearch.h; path = Grid/Pathfinding/PathfindingAStarSearch.h; sourceTree = "<group>"; };
+		04C8971117A5E1C9004F4E99 /* PathfindingAStarSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathfindingAStarSearch.m; path = Grid/Pathfinding/PathfindingAStarSearch.m; sourceTree = "<group>"; };
+		04DF0CAB17960CD40065B4EE /* PathfindingMapA.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = PathfindingMapA.plist; path = Resources/Maps/PathfindingMapA.plist; sourceTree = "<group>"; };
+		04DF0CAD179628E20065B4EE /* PathfindingMapB.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PathfindingMapB.plist; path = Resources/Maps/PathfindingMapB.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0474D313176B9A480008FCD2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0474D31C176B9A480008FCD2 /* CoreGraphics.framework in Frameworks */,
+				0474D31E176B9A480008FCD2 /* UIKit.framework in Frameworks */,
+				0474D320176B9A480008FCD2 /* SpriteKit.framework in Frameworks */,
+				0474D31A176B9A480008FCD2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0417D51E1789FC0500C79BE1 /* Pathfinding */ = {
+			isa = PBXGroup;
+			children = (
+				04C8971017A5E1C9004F4E99 /* PathfindingAStarSearch.h */,
+				047D4301178BB6D300FC7262 /* PathfindingBreadthFirstSearch.h */,
+				0417D5201789FE0000C79BE1 /* PathfindingDepthFirstSearch.h */,
+				04C8970D17A5C0E0004F4E99 /* PathfindingDijkstraSearch.h */,
+				0417D51F1789FC4D00C79BE1 /* PathfindingPathfinder.h */,
+				04C8971117A5E1C9004F4E99 /* PathfindingAStarSearch.m */,
+				047D4302178BB6D300FC7262 /* PathfindingBreadthFirstSearch.m */,
+				0417D5211789FE0000C79BE1 /* PathfindingDepthFirstSearch.m */,
+				04C8970E17A5C0E0004F4E99 /* PathfindingDijkstraSearch.m */,
+			);
+			name = Pathfinding;
+			sourceTree = "<group>";
+		};
+		0441AD8E177FAB81004A4BE5 /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				0417D51E1789FC0500C79BE1 /* Pathfinding */,
+				0441AD8F177FAB9D004A4BE5 /* PathfindingGrid.h */,
+				043CB95117861874009FAB0C /* PathfindingGridCell.h */,
+				043CB9561786199D009FAB0C /* PathfindingMapEdge.h */,
+				043CB95417861964009FAB0C /* PathfindingMapNode.h */,
+				0441AD90177FAB9D004A4BE5 /* PathfindingGrid.m */,
+				043CB95217861874009FAB0C /* PathfindingGridCell.m */,
+				043CB9571786199D009FAB0C /* PathfindingMapEdge.m */,
+				043CB95517861964009FAB0C /* PathfindingMapNode.m */,
+			);
+			name = Grid;
+			sourceTree = "<group>";
+		};
+		0474D30D176B9A480008FCD2 = {
+			isa = PBXGroup;
+			children = (
+				0474D321176B9A480008FCD2 /* Pathfinding */,
+				0474D318176B9A480008FCD2 /* Frameworks */,
+				0474D317176B9A480008FCD2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0474D317176B9A480008FCD2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0474D316176B9A480008FCD2 /* Pathfinding.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0474D318176B9A480008FCD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0474D319176B9A480008FCD2 /* Foundation.framework */,
+				0474D31B176B9A480008FCD2 /* CoreGraphics.framework */,
+				0474D31D176B9A480008FCD2 /* UIKit.framework */,
+				0474D31F176B9A480008FCD2 /* SpriteKit.framework */,
+				0474D342176B9A480008FCD2 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0474D321176B9A480008FCD2 /* Pathfinding */ = {
+			isa = PBXGroup;
+			children = (
+				0474D336176B9A480008FCD2 /* PathfindingScene.h */,
+				0474D32A176B9A480008FCD2 /* PathfindingAppDelegate.h */,
+				0474D333176B9A480008FCD2 /* PathfindingViewController.h */,
+				0474D337176B9A480008FCD2 /* PathfindingScene.m */,
+				0474D32B176B9A480008FCD2 /* PathfindingAppDelegate.m */,
+				0474D334176B9A480008FCD2 /* PathfindingViewController.m */,
+				0474D33B176B9A480008FCD2 /* Images.xcassets */,
+				04DF0CA917960CA60065B4EE /* Assets */,
+				0474D35A176BDA860008FCD2 /* Characters */,
+				0441AD8E177FAB81004A4BE5 /* Grid */,
+				0474D330176B9A480008FCD2 /* Main_iPad.storyboard */,
+				0474D32D176B9A480008FCD2 /* Main_iPhone.storyboard */,
+				0474D322176B9A480008FCD2 /* Supporting Files */,
+			);
+			name = Pathfinding;
+			path = Pathfinding;
+			sourceTree = "<group>";
+		};
+		0474D322176B9A480008FCD2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0474D323176B9A480008FCD2 /* Pathfinding-Info.plist */,
+				0474D324176B9A480008FCD2 /* InfoPlist.strings */,
+				0474D327176B9A480008FCD2 /* main.m */,
+				0474D329176B9A480008FCD2 /* Pathfinding-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0474D35A176BDA860008FCD2 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				0474D358176BDA7D0008FCD2 /* PathfindingBaseCharacter.h */,
+				0441AD8B177FA9DD004A4BE5 /* PathfindingCharacterManager.h */,
+				0474D359176BDA7D0008FCD2 /* PathfindingBaseCharacter.m */,
+				0441AD8C177FA9DD004A4BE5 /* PathfindingCharacterManager.m */,
+			);
+			name = Characters;
+			sourceTree = "<group>";
+		};
+		04DF0CA917960CA60065B4EE /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				04DF0CAA17960CAE0065B4EE /* Maps */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		04DF0CAA17960CAE0065B4EE /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				04DF0CAB17960CD40065B4EE /* PathfindingMapA.plist */,
+				04DF0CAD179628E20065B4EE /* PathfindingMapB.plist */,
+			);
+			name = Maps;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0474D315176B9A480008FCD2 /* Pathfinding */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0474D352176B9A480008FCD2 /* Build configuration list for PBXNativeTarget "Pathfinding" */;
+			buildPhases = (
+				0474D312176B9A480008FCD2 /* Sources */,
+				0474D313176B9A480008FCD2 /* Frameworks */,
+				0474D314176B9A480008FCD2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Pathfinding;
+			productName = Pathfinding;
+			productReference = 0474D316176B9A480008FCD2 /* Pathfinding.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0474D30E176B9A480008FCD2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Pathfinding;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Toeprint Interactive";
+			};
+			buildConfigurationList = 0474D311176B9A480008FCD2 /* Build configuration list for PBXProject "Pathfinding" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0474D30D176B9A480008FCD2;
+			productRefGroup = 0474D317176B9A480008FCD2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0474D315176B9A480008FCD2 /* Pathfinding */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0474D314176B9A480008FCD2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0474D33C176B9A480008FCD2 /* Images.xcassets in Resources */,
+				0474D332176B9A480008FCD2 /* Main_iPad.storyboard in Resources */,
+				0474D32F176B9A480008FCD2 /* Main_iPhone.storyboard in Resources */,
+				0474D326176B9A480008FCD2 /* InfoPlist.strings in Resources */,
+				04DF0CAC17960E800065B4EE /* PathfindingMapA.plist in Resources */,
+				04DF0CAE179628E20065B4EE /* PathfindingMapB.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0474D312176B9A480008FCD2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0474D35D176BE2160008FCD2 /* PathfindingBaseCharacter.m in Sources */,
+				047D4303178BB6D300FC7262 /* PathfindingBreadthFirstSearch.m in Sources */,
+				0474D32C176B9A480008FCD2 /* PathfindingAppDelegate.m in Sources */,
+				0474D328176B9A480008FCD2 /* main.m in Sources */,
+				0474D338176B9A480008FCD2 /* PathfindingScene.m in Sources */,
+				0441AD91177FABBF004A4BE5 /* PathfindingGrid.m in Sources */,
+				043CB95317861874009FAB0C /* PathfindingGridCell.m in Sources */,
+				0417D5221789FE5E00C79BE1 /* PathfindingDepthFirstSearch.m in Sources */,
+				04C8970F17A5C0E0004F4E99 /* PathfindingDijkstraSearch.m in Sources */,
+				04C8971217A5E1C9004F4E99 /* PathfindingAStarSearch.m in Sources */,
+				043CB95817861E91009FAB0C /* PathfindingMapEdge.m in Sources */,
+				043CB95917861E91009FAB0C /* PathfindingMapNode.m in Sources */,
+				0441AD8D177FAA58004A4BE5 /* PathfindingCharacterManager.m in Sources */,
+				0474D335176B9A480008FCD2 /* PathfindingViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0474D324176B9A480008FCD2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0474D325176B9A480008FCD2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0474D32D176B9A480008FCD2 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0474D32E176B9A480008FCD2 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		0474D330176B9A480008FCD2 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0474D331176B9A480008FCD2 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0474D350176B9A480008FCD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0474D351176B9A480008FCD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0474D353176B9A480008FCD2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pathfinding/Pathfinding-Prefix.pch";
+				INFOPLIST_FILE = "Pathfinding/Pathfinding-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0474D354176B9A480008FCD2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Pathfinding/Pathfinding-Prefix.pch";
+				INFOPLIST_FILE = "Pathfinding/Pathfinding-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SPRITEKIT_TEXTURE_ATLAS_OUTPUT = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0474D311176B9A480008FCD2 /* Build configuration list for PBXProject "Pathfinding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0474D350176B9A480008FCD2 /* Debug */,
+				0474D351176B9A480008FCD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0474D352176B9A480008FCD2 /* Build configuration list for PBXNativeTarget "Pathfinding" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0474D353176B9A480008FCD2 /* Debug */,
+				0474D354176B9A480008FCD2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0474D30E176B9A480008FCD2 /* Project object */;
+}

@@ -1,0 +1,4 @@
+*.xcsettings
+*.xcbkptlist
+*.xccheckout
+.DS_Store
