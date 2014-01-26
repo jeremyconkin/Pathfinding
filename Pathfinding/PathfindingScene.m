@@ -7,13 +7,11 @@
 
 #import "PathfindingScene.h"
 
-#import "PathfindingCharacterManager.h"
 #import "PathfindingGrid.h"
 
 @interface PathfindingScene()
 
 @property (strong,nonatomic) PathfindingGrid* grid;
-@property (strong,nonatomic) PathfindingCharacterManager* characterManager;
 
 @end
 
@@ -26,7 +24,6 @@
         self.grid = [[PathfindingGrid alloc] initWithScene:self
                                             withRows:4
                                          withColumns:5];
-        self.characterManager = [[PathfindingCharacterManager alloc] initWithGrid:self.grid];
         
     }
     return self;
