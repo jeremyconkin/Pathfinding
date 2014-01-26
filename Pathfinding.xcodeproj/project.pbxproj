@@ -25,7 +25,6 @@
 		0474D335176B9A480008FCD2 /* PathfindingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474D334176B9A480008FCD2 /* PathfindingViewController.m */; };
 		0474D338176B9A480008FCD2 /* PathfindingScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474D337176B9A480008FCD2 /* PathfindingScene.m */; };
 		0474D33C176B9A480008FCD2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0474D33B176B9A480008FCD2 /* Images.xcassets */; };
-		0474D35D176BE2160008FCD2 /* PathfindingBaseCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0474D359176BDA7D0008FCD2 /* PathfindingBaseCharacter.m */; };
 		047637A21894DBE8007BAA64 /* map2.bmp in Resources */ = {isa = PBXBuildFile; fileRef = 047637A11894DBE8007BAA64 /* map2.bmp */; };
 		047D4303178BB6D300FC7262 /* PathfindingBreadthFirstSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 047D4302178BB6D300FC7262 /* PathfindingBreadthFirstSearch.m */; };
 		04C8970F17A5C0E0004F4E99 /* PathfindingDijkstraSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C8970E17A5C0E0004F4E99 /* PathfindingDijkstraSearch.m */; };
@@ -64,8 +63,6 @@
 		0474D337176B9A480008FCD2 /* PathfindingScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PathfindingScene.m; sourceTree = "<group>"; };
 		0474D33B176B9A480008FCD2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0474D342176B9A480008FCD2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		0474D358176BDA7D0008FCD2 /* PathfindingBaseCharacter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingBaseCharacter.h; path = Characters/PathfindingBaseCharacter.h; sourceTree = "<group>"; };
-		0474D359176BDA7D0008FCD2 /* PathfindingBaseCharacter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PathfindingBaseCharacter.m; path = Characters/PathfindingBaseCharacter.m; sourceTree = "<group>"; };
 		047637A11894DBE8007BAA64 /* map2.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = map2.bmp; path = Resources/Maps/map2.bmp; sourceTree = "<group>"; };
 		047D4301178BB6D300FC7262 /* PathfindingBreadthFirstSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathfindingBreadthFirstSearch.h; path = Grid/Pathfinding/PathfindingBreadthFirstSearch.h; sourceTree = "<group>"; };
 		047D4302178BB6D300FC7262 /* PathfindingBreadthFirstSearch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathfindingBreadthFirstSearch.m; path = Grid/Pathfinding/PathfindingBreadthFirstSearch.m; sourceTree = "<group>"; };
@@ -185,8 +182,6 @@
 		0474D35A176BDA860008FCD2 /* Characters */ = {
 			isa = PBXGroup;
 			children = (
-				0474D358176BDA7D0008FCD2 /* PathfindingBaseCharacter.h */,
-				0474D359176BDA7D0008FCD2 /* PathfindingBaseCharacter.m */,
 			);
 			name = Characters;
 			sourceTree = "<group>";
@@ -277,7 +272,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0474D35D176BE2160008FCD2 /* PathfindingBaseCharacter.m in Sources */,
 				047D4303178BB6D300FC7262 /* PathfindingBreadthFirstSearch.m in Sources */,
 				0474D32C176B9A480008FCD2 /* PathfindingAppDelegate.m in Sources */,
 				0474D328176B9A480008FCD2 /* main.m in Sources */,

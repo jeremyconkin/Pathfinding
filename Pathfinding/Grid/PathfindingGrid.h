@@ -7,7 +7,6 @@
 
 #import <Foundation/Foundation.h>
 
-@class PathfindingBaseCharacter;
 @class PathfindingScene;
 
 @interface PathfindingGrid : NSObject

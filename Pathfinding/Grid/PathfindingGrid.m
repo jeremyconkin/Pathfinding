@@ -8,7 +8,6 @@
 #import "PathfindingGrid.h"
 
 #import "PathfindingAStarSearch.h"
-#import "PathfindingBaseCharacter.h"
 #import "PathfindingBreadthFirstSearch.h"
 #import "PathfindingDepthFirstSearch.h"
 #import "PathfindingDijkstraSearch.h"
