@@ -30,7 +30,7 @@
     [self.searchFrontier addObject:fromNode];
     PathfindingMapEdge* startingEdge = [[PathfindingMapEdge alloc] initWithMapNode:fromNode
                                                       withOtherMapNode:fromNode
-                                                              withCost:0
+                                                              withCost:0.f
                                                              withScene:nil];
     fromNode.previousEdge = startingEdge;
     
@@ -56,13 +56,13 @@
         if((otherNode.pathfindingSearchedId != self.searchIdentifier) // Hasn't been marked complete
            && (![self.searchFrontier containsObject:otherNode]) // Isn't already in the search frontier
         ) {
-            otherNode.costToReach = NSIntegerMax;
+            otherNode.costToReach = FLT_MAX;
             otherNode.heuristicCostToDestination = [self heuristicCostForNode:otherNode];
             [self.searchFrontier addObject:otherNode];
         }
         
         // New cost is cost to this destination plus edge cost
-        NSInteger costToReachOtherNodeFromHere = node.costToReach + edge.cost;
+        float costToReachOtherNodeFromHere = node.costToReach + edge.cost;
         if(otherNode.costToReach > costToReachOtherNodeFromHere) {
             otherNode.costToReach = costToReachOtherNodeFromHere;
             otherNode.previousEdge = edge;
@@ -79,7 +79,7 @@
     // Process cheapest node
     PathfindingMapNode* nextNode = [self.searchFrontier objectAtIndex:0];
     [nextNode.previousEdge markSearched];
-    [self performSelector:@selector(processNode:) withObject:nextNode afterDelay:PathfindingITERATION_DELAY];
+    [self performSelector:@selector(processNode:) withObject:nextNode afterDelay:SEARCH_ITERATION_DELAY];
 }
 
 - (void)completeSearch {

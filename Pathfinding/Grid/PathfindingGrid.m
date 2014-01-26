@@ -22,100 +22,130 @@
 @property (assign) NSInteger numberOfRows;
 @property (assign) NSInteger numberOfColumns;
 @property (weak,nonatomic) PathfindingScene* scene;
+@property (strong,nonatomic) NSMutableArray* mapData;
 
 @end
 
+static const NSUInteger NODE_DENSITY = 16;
 
 @implementation PathfindingGrid
 
-- (id)initWithScene:(PathfindingScene*)scene
-        withRows:(NSInteger)rows
-        withColumns:(NSInteger)columns {
+- (id)initWithScene:(PathfindingScene*)scene {
     
     self = [super init];
     if(self) {
         self.scene = scene;
-        self.numberOfRows = rows;
-        self.numberOfColumns = columns;
-        [self createGrid];
+        
+        [self parseMapIntoDataArray];
+        
+        // Hard-coded pathfinding example
+        id<PathfindingPathfinder> search = [[PathfindingAStarSearch alloc] init];
+        NSArray *startingRow = [self.mapData objectAtIndex:5];
+        NSArray *finishingRow = [self.mapData objectAtIndex:10];
+        PathfindingMapNode* nodeA = [startingRow objectAtIndex:10];
+        PathfindingMapNode* nodeB = [finishingRow objectAtIndex:20];
+        nodeB.fillColor = [UIColor purpleColor];
+        [search  pathFromNode:nodeA
+                       toNode:nodeB];
     }
     
     return self;
 }
 
-- (void)createGrid {
-    CGFloat const rowHeight = 30.f;
-    CGFloat const columnWidth = 50.f;
+- (void)parseMapIntoDataArray {
     
-    self.rows = [[NSMutableArray alloc] init];
-    for(NSUInteger i = 0; i < self.numberOfRows; ++i) {
-        NSMutableArray* row = [NSMutableArray arrayWithCapacity:self.numberOfColumns];
-        for(NSUInteger j = 0; j < self.numberOfColumns; ++j) {
-            PathfindingGridCell* cell = [[PathfindingGridCell alloc] initWithLocation:CGPointMake(j*columnWidth + 20, i*rowHeight + 230.f)
-                                                                  andSize:CGSizeMake(columnWidth,rowHeight)
-                                                                 andScene:self.scene];
-            [row addObject:cell];
+    self.mapData = [[NSMutableArray alloc] init];
+    
+    // Create a data buffer holding the map image data
+    CGImageRef image = [UIImage imageNamed:@"map2.bmp"].CGImage;
+    NSUInteger width = CGImageGetWidth(image);
+    NSUInteger height = CGImageGetHeight(image);
+    static const NSUInteger bytesPerPixel = 4;
+    unsigned char *rawData = malloc(height * width * bytesPerPixel);
+    NSUInteger bytesPerRow = bytesPerPixel * width;
+    static const NSUInteger bitsPerComponent = 8;
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+    CGContextRef context = CGBitmapContextCreate(rawData, width, height, bitsPerComponent, bytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+    CGColorSpaceRelease(colorSpace);
+    
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), image);
+    CGContextRelease(context);
+    
+    // rawData now contains the image data in the RGBA8888 pixel format.
+    // Create a double array of nodes in the format array[columns][rows]. Bottom left origin.
+    for (NSUInteger row = 0; row < height; row += NODE_DENSITY) {
+        
+        NSUInteger byteIndexOfRow = (bytesPerRow*row);
+        NSMutableArray *rowNodesArray = [[NSMutableArray alloc] init];
+        for (NSUInteger column = 0; column < width; column += NODE_DENSITY) {
+            
+            NSUInteger arrayOffset = byteIndexOfRow + (column * bytesPerPixel);
+            NSUInteger redGreenBlue = rawData[arrayOffset] + rawData[arrayOffset+1] + rawData[arrayOffset+2];
+            // Image buffer is y down coordinate space and sprite node is y up.
+            // Therefore, the current row is found via (row+currentRow) = height => currentRow = (height-row)
+            PathfindingMapNode* node = [[PathfindingMapNode alloc] initWithPosition:CGPointMake(column, height-row)
+                                                                          withScene:self.scene
+                                                                       withValidity:(redGreenBlue > 0)];
+            [rowNodesArray addObject:node];
         }
-        [self.rows addObject:row];
+        [self.mapData addObject:rowNodesArray];
     }
     
-    NSString *mapFilePath = [[NSBundle mainBundle] pathForResource:@"PathfindingMapB" ofType:@"plist"];
-    NSDictionary *mapData = [[NSDictionary alloc] initWithContentsOfFile:mapFilePath];
-    NSMutableDictionary* nodesDict = [[NSMutableDictionary alloc] init];
+    [self createEdges];
+}
+
+- (void)createEdges {
     
-    // Parse the nodes
-    NSEnumerator *nodeEnumerator = [[mapData objectForKey:@"Nodes"] objectEnumerator];
-    id value;
-    while (value = [nodeEnumerator nextObject]) {
-        NSInteger X = [[value valueForKey:@"X"] intValue];
-        NSInteger Y = [[value valueForKey:@"Y"] intValue];
-        PathfindingMapNode* node = [[PathfindingMapNode alloc] initWithPosition:CGPointMake(X,Y)
-                                                          withScene:self.scene];
-        node.name = [value objectForKey:@"Name"];
-        [nodesDict setValue:node
-                      forKey:node.name];
+    static const float diagonalCost = 1.4f; // Diagonal distance if edges are both distance of 1
+    for (NSUInteger i = 0; i < self.mapData.count; ++i) {
+
+        NSArray *rowData = [self.mapData objectAtIndex:i];
+        BOOL notLastRow = (i < (self.mapData.count - 1));
+
+        if (notLastRow) {
+            NSArray *nextRow = [self.mapData objectAtIndex:i+1];
+            
+            // Add upward edges
+            for (NSUInteger j = 0; j < rowData.count; ++j) {
+                [self addBidirectionalEdgeFromNode:[rowData objectAtIndex:j]
+                                            toNode:[nextRow objectAtIndex:j]
+                                          withCost:1.f];
+            }
+            
+            // Upper right diagonals
+            for (NSUInteger j = 0; j < rowData.count-1; ++j) {
+                [self addBidirectionalEdgeFromNode:[rowData objectAtIndex:j]
+                                            toNode:[nextRow objectAtIndex:j+1]
+                                          withCost:diagonalCost];
+            }
+            
+            // Upper left diagonals
+            for (NSUInteger j = 1; j < rowData.count; ++j) {
+                [self addBidirectionalEdgeFromNode:[rowData objectAtIndex:j]
+                                            toNode:[nextRow objectAtIndex:j-1]
+                                          withCost:diagonalCost];
+            }
+        }
+        
+        // Add right edges
+        for (NSUInteger j = 0; j < rowData.count-1; ++j) {
+            [self addBidirectionalEdgeFromNode:[rowData objectAtIndex:j]
+                                        toNode:[rowData objectAtIndex:j+1]
+                                      withCost:1.f];
+        }
     }
+}
+
+- (void)addBidirectionalEdgeFromNode:(PathfindingMapNode *)nodeA
+                              toNode:(PathfindingMapNode *)nodeB
+                            withCost:(float)cost {
     
-    // Parse the edges
-    NSEnumerator *edgeEnumerator = [[mapData objectForKey:@"Edges"] objectEnumerator];
-    while (value = [edgeEnumerator nextObject]) {
-        PathfindingMapNode* nodeA = [nodesDict objectForKey:[value valueForKey:@"NodeA"]];
-        PathfindingMapNode* nodeB = [nodesDict objectForKey:[value valueForKey:@"NodeB"]];
-        NSInteger cost = [[value valueForKey:@"Cost"] intValue];
+    if (nodeA.isValid && nodeB.isValid) {
         PathfindingMapEdge* edge = [[PathfindingMapEdge alloc] initWithMapNode:nodeA
-                                                  withOtherMapNode:nodeB
-                                                          withCost:cost
-                                                         withScene:self.scene];
-        edge.name = [value valueForKey:@"Name"];
+                                                              withOtherMapNode:nodeB
+                                                                      withCost:cost
+                                                                     withScene:self.scene];
     }
-
-    PathfindingAStarSearch* search = [[PathfindingAStarSearch alloc] init];
-    PathfindingMapNode* nodeA = [nodesDict objectForKey:@"F8"];
-    [search  pathFromNode:nodeA
-                   toNode:[nodesDict objectForKey:@"C8"]];
-}
-
-- (void)addCharacter:(PathfindingBaseCharacter*)character
-               atRow:(NSInteger)row
-            atColumn:(NSInteger)column {
-    
-    SKSpriteNode* spriteNode = [character spriteNode];
-    
-    spriteNode.position = [self locationForCellAtRow:row
-                                            atColumn:column];
-    
-    [self.scene addChild:spriteNode];
-}
-
-- (CGPoint)zeroXForRow:(NSInteger)row {
-   return [self locationForCellAtRow:row
-                            atColumn:0];
-}
-
-- (CGPoint)locationForCellAtRow:(CGFloat)row
-                       atColumn:(CGFloat)column {
-    PathfindingGridCell* cell = [[self.rows objectAtIndex:row] objectAtIndex:column];
-    return cell.location;
 }
 
 @end

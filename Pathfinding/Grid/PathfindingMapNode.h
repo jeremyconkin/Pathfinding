@@ -13,7 +13,8 @@
 @interface PathfindingMapNode : SKShapeNode //todo_jconkin. Rename to PathNode?
 
 - (id)initWithPosition:(CGPoint)position
-             withScene:(SKScene*)scene;
+             withScene:(SKScene*)scene
+          withValidity:(BOOL)isValid;
 
 - (void)addEdge:(PathfindingMapEdge*)edge;
 
@@ -28,9 +29,12 @@
 @property (assign) NSInteger pathfindingSearchedId;
 
 // The actual cost to reach this node
-@property (assign) NSInteger costToReach;
+@property (assign) float costToReach;
 
 // The estimated cost for this node to the destination node
-@property (assign) CGFloat heuristicCostToDestination;
+@property (assign) float heuristicCostToDestination;
+
+// Can a character travel to this node
+@property (assign) BOOL isValid;
 
 @end

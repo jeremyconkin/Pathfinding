@@ -18,8 +18,8 @@
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
-    // Create and configure the scene.
-    SKScene * scene = [PathfindingScene sceneWithSize:skView.bounds.size];
+    // Create and configure the scene. Flip width and height because we're in landscape only.
+    SKScene * scene = [PathfindingScene sceneWithSize:CGSizeMake(skView.bounds.size.height, skView.bounds.size.width)];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

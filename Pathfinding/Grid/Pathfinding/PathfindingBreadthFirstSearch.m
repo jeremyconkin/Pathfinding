@@ -31,7 +31,7 @@
     self.searchIdentifier = arc4random();
     PathfindingMapEdge* startingEdge = [[PathfindingMapEdge alloc] initWithMapNode:fromNode
                                                       withOtherMapNode:fromNode
-                                                              withCost:0
+                                                              withCost:0.f
                                                              withScene:nil];
     [self.edgeStack addObject:startingEdge];
     [self processEdge];
@@ -75,7 +75,7 @@
     node.pathfindingSearchedId = self.searchIdentifier;
     [edge markSearched];
     
-    [self performSelector:@selector(processEdge) withObject:nil afterDelay:PathfindingITERATION_DELAY];
+    [self performSelector:@selector(processEdge) withObject:nil afterDelay:SEARCH_ITERATION_DELAY];
 }
 
 - (void)completeSearch {

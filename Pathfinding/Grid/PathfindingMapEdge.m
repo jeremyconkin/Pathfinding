@@ -13,7 +13,7 @@
 
 @property (weak,nonatomic) PathfindingMapNode* nodeA;
 @property (weak,nonatomic) PathfindingMapNode* nodeB;
-@property (assign,nonatomic) NSInteger cost;
+@property (assign,nonatomic) float cost;
 
 @end
 
@@ -22,7 +22,7 @@
 
 - (id)initWithMapNode:(PathfindingMapNode*)nodeA
      withOtherMapNode:(PathfindingMapNode*)nodeB
-             withCost:(NSInteger)cost
+             withCost:(float)cost
             withScene:(SKScene*)scene{
     self = [super init];
     
@@ -84,7 +84,7 @@
         SKLabelNode* labelNode = [[SKLabelNode alloc] init];
         labelNode.position = CGPointMake(self.nodeA.position.x + ((self.nodeB.position.x - self.nodeA.position.x) * 0.5f),
                                          self.nodeA.position.y + ((self.nodeB.position.y - self.nodeA.position.y) * 0.5f));
-        labelNode.text = [NSString stringWithFormat:@"%d",self.cost];
+        labelNode.text = [NSString stringWithFormat:@"%f",self.cost];
         labelNode.fontColor = [SKColor whiteColor];
         labelNode.fontSize = 10;
         [self.parentScene addChild:labelNode];

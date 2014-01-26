@@ -21,9 +21,7 @@
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor colorWithRed:100.f/255.f green:149.f/255.f blue:237.f/255.f alpha:1.f];
         
-        self.grid = [[PathfindingGrid alloc] initWithScene:self
-                                            withRows:4
-                                         withColumns:5];
+        self.grid = [[PathfindingGrid alloc] initWithScene:self];
         
     }
     return self;

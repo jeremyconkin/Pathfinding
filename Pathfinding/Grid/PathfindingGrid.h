@@ -12,13 +12,6 @@
 
 @interface PathfindingGrid : NSObject
 
-- (id)initWithScene:(PathfindingScene*)scene
-           withRows:(NSInteger)rows
-        withColumns:(NSInteger)columns;
+- (id)initWithScene:(PathfindingScene*)scene;
 
-- (void)addCharacter:(PathfindingBaseCharacter*)character
-               atRow:(NSInteger)row
-            atColumn:(NSInteger)column;
-
-- (CGPoint)zeroXForRow:(NSInteger)row;
 @end

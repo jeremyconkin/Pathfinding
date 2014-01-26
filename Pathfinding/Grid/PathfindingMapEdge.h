@@ -14,13 +14,13 @@
 
 - (id)initWithMapNode:(PathfindingMapNode*)nodeA
      withOtherMapNode:(PathfindingMapNode*)nodeB
-             withCost:(NSInteger)cost
+             withCost:(float)cost
             withScene:(SKScene*)scene;
 
 - (void)markSearched;
 - (void)markPartOfPath;
 
-@property (assign,nonatomic,readonly) NSInteger cost;
+@property (assign,nonatomic,readonly) float cost;
 //todo_jconkin. Consider a singleton.
 @property (weak,nonatomic) SKScene* parentScene;
 

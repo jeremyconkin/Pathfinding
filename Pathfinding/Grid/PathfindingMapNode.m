@@ -10,13 +10,15 @@
 @implementation PathfindingMapNode
 
 - (id)initWithPosition:(CGPoint)position
-            withScene:(SKScene*)scene {
+             withScene:(SKScene*)scene
+          withValidity:(BOOL)isValid {
     self = [super init];
     if(self) {
         self.position = position;
         self.parentScene = scene;
+        self.isValid = isValid;
         self.edges = [[NSMutableArray alloc] init];
-        self.fillColor = [SKColor purpleColor];
+        self.fillColor = isValid ? [SKColor greenColor] : [SKColor redColor];
         self.lineWidth = 0.f;
         
         [self createPath];

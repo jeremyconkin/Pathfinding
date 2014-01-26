@@ -10,7 +10,7 @@
 #import "PathfindingMapNode.h"
 
 // temp_jconkin. Change for release
-#define PathfindingITERATION_DELAY 0.5f
+#define SEARCH_ITERATION_DELAY 0.05f
 
 @protocol PathfindingPathfinder <NSObject>
 
