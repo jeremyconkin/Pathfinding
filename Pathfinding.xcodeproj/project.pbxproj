@@ -146,15 +146,14 @@
 		0474D321176B9A480008FCD2 /* Pathfinding */ = {
 			isa = PBXGroup;
 			children = (
-				0474D336176B9A480008FCD2 /* PathfindingScene.h */,
 				0474D32A176B9A480008FCD2 /* PathfindingAppDelegate.h */,
+				0474D336176B9A480008FCD2 /* PathfindingScene.h */,
 				0474D333176B9A480008FCD2 /* PathfindingViewController.h */,
-				0474D337176B9A480008FCD2 /* PathfindingScene.m */,
 				0474D32B176B9A480008FCD2 /* PathfindingAppDelegate.m */,
+				0474D337176B9A480008FCD2 /* PathfindingScene.m */,
 				0474D334176B9A480008FCD2 /* PathfindingViewController.m */,
 				0474D33B176B9A480008FCD2 /* Images.xcassets */,
 				04DF0CA917960CA60065B4EE /* Assets */,
-				0474D35A176BDA860008FCD2 /* Characters */,
 				0441AD8E177FAB81004A4BE5 /* Grid */,
 				0474D330176B9A480008FCD2 /* Main_iPad.storyboard */,
 				0474D32D176B9A480008FCD2 /* Main_iPhone.storyboard */,
@@ -172,13 +171,6 @@
 				0474D329176B9A480008FCD2 /* Pathfinding-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		0474D35A176BDA860008FCD2 /* Characters */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Characters;
 			sourceTree = "<group>";
 		};
 		04DF0CA917960CA60065B4EE /* Assets */ = {
