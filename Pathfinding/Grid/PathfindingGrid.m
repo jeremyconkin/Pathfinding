@@ -11,9 +11,9 @@
 #import "PathfindingBreadthFirstSearch.h"
 #import "PathfindingDepthFirstSearch.h"
 #import "PathfindingDijkstraSearch.h"
-#import "PathfindingGridCell.h"
 #import "PathfindingMapEdge.h"
 #import "PathfindingMapNode.h"
+#import "PathfindingScene.h"
 
 @interface PathfindingGrid()
 

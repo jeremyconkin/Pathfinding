@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0417D5221789FE5E00C79BE1 /* PathfindingDepthFirstSearch.m in Sources */ = {isa = PBXBuildFile; fileRef = 0417D5211789FE0000C79BE1 /* PathfindingDepthFirstSearch.m */; };
-		043CB95317861874009FAB0C /* PathfindingGridCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB95217861874009FAB0C /* PathfindingGridCell.m */; };
 		043CB95817861E91009FAB0C /* PathfindingMapEdge.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB9571786199D009FAB0C /* PathfindingMapEdge.m */; };
 		043CB95917861E91009FAB0C /* PathfindingMapNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 043CB95517861964009FAB0C /* PathfindingMapNode.m */; };
 		0441AD91177FABBF004A4BE5 /* PathfindingGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 0441AD90177FAB9D004A4BE5 /* PathfindingGrid.m */; };
@@ -35,8 +34,6 @@
 		0417D51F1789FC4D00C79BE1 /* PathfindingPathfinder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingPathfinder.h; path = Grid/Pathfinding/PathfindingPathfinder.h; sourceTree = "<group>"; };
 		0417D5201789FE0000C79BE1 /* PathfindingDepthFirstSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingDepthFirstSearch.h; path = Grid/Pathfinding/PathfindingDepthFirstSearch.h; sourceTree = "<group>"; };
 		0417D5211789FE0000C79BE1 /* PathfindingDepthFirstSearch.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PathfindingDepthFirstSearch.m; path = Grid/Pathfinding/PathfindingDepthFirstSearch.m; sourceTree = "<group>"; };
-		043CB95117861874009FAB0C /* PathfindingGridCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PathfindingGridCell.h; path = Grid/PathfindingGridCell.h; sourceTree = "<group>"; };
-		043CB95217861874009FAB0C /* PathfindingGridCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PathfindingGridCell.m; path = Grid/PathfindingGridCell.m; sourceTree = "<group>"; };
 		043CB95417861964009FAB0C /* PathfindingMapNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingMapNode.h; path = Grid/PathfindingMapNode.h; sourceTree = "<group>"; };
 		043CB95517861964009FAB0C /* PathfindingMapNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = PathfindingMapNode.m; path = Grid/PathfindingMapNode.m; sourceTree = "<group>"; };
 		043CB9561786199D009FAB0C /* PathfindingMapEdge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PathfindingMapEdge.h; path = Grid/PathfindingMapEdge.h; sourceTree = "<group>"; };
@@ -108,11 +105,9 @@
 			children = (
 				0417D51E1789FC0500C79BE1 /* Pathfinding */,
 				0441AD8F177FAB9D004A4BE5 /* PathfindingGrid.h */,
-				043CB95117861874009FAB0C /* PathfindingGridCell.h */,
 				043CB9561786199D009FAB0C /* PathfindingMapEdge.h */,
 				043CB95417861964009FAB0C /* PathfindingMapNode.h */,
 				0441AD90177FAB9D004A4BE5 /* PathfindingGrid.m */,
-				043CB95217861874009FAB0C /* PathfindingGridCell.m */,
 				043CB9571786199D009FAB0C /* PathfindingMapEdge.m */,
 				043CB95517861964009FAB0C /* PathfindingMapNode.m */,
 			);
@@ -277,7 +272,6 @@
 				0474D328176B9A480008FCD2 /* main.m in Sources */,
 				0474D338176B9A480008FCD2 /* PathfindingScene.m in Sources */,
 				0441AD91177FABBF004A4BE5 /* PathfindingGrid.m in Sources */,
-				043CB95317861874009FAB0C /* PathfindingGridCell.m in Sources */,
 				0417D5221789FE5E00C79BE1 /* PathfindingDepthFirstSearch.m in Sources */,
 				04C8970F17A5C0E0004F4E99 /* PathfindingDijkstraSearch.m in Sources */,
 				04C8971217A5E1C9004F4E99 /* PathfindingAStarSearch.m in Sources */,
