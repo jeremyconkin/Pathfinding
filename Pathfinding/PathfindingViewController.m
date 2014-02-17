@@ -10,16 +10,17 @@
 
 @implementation PathfindingViewController
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-
+- (void)presentSceneWithImage:(UIImage*)image {
+    
     // Configure the view.
     SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
+    // Flip these for debugging
+    skView.showsFPS = NO;
+    skView.showsNodeCount = NO;
     
     // Create and configure the scene. Flip width and height because we're in landscape only.
-    SKScene * scene = [PathfindingScene sceneWithSize:CGSizeMake(skView.bounds.size.height, skView.bounds.size.width)];
+    PathfindingScene* scene = [PathfindingScene sceneWithSize:CGSizeMake(skView.bounds.size.height, skView.bounds.size.width)];
+    [scene createGridWithImage:image];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.

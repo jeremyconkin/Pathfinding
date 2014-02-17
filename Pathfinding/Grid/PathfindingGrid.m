@@ -15,6 +15,9 @@
 #import "PathfindingMapNode.h"
 #import "PathfindingScene.h"
 
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.height
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.width
+
 @interface PathfindingGrid()
 
 @property (strong,nonatomic) NSMutableArray* rows;
@@ -29,13 +32,14 @@ static const NSUInteger NODE_DENSITY = 16;
 
 @implementation PathfindingGrid
 
-- (id)initWithScene:(PathfindingScene*)scene {
+- (id)initWithScene:(PathfindingScene*)scene
+       withMapImage:(UIImage*)image {
     
     self = [super init];
     if(self) {
         self.scene = scene;
         
-        [self parseMapIntoDataArray];
+        [self parseMapIntoDataArrayWithImage:image];
         
         // Hard-coded pathfinding example
         id<PathfindingPathfinder> search = [[PathfindingAStarSearch alloc] init];
@@ -51,14 +55,20 @@ static const NSUInteger NODE_DENSITY = 16;
     return self;
 }
 
-- (void)parseMapIntoDataArray {
+/**
+ * Create a grid of nodes using pixel data to determine if a node
+ * is traversable
+ *
+ * @param image Image used to make the map
+ */
+- (void)parseMapIntoDataArrayWithImage:(UIImage*)image {
     
     self.mapData = [[NSMutableArray alloc] init];
     
     // Create a data buffer holding the map image data
-    CGImageRef image = [UIImage imageNamed:@"map2.bmp"].CGImage;
-    NSUInteger width = CGImageGetWidth(image);
-    NSUInteger height = CGImageGetHeight(image);
+    CGImageRef imageRef = image.CGImage;
+    NSUInteger width = CGImageGetWidth(imageRef);
+    NSUInteger height = CGImageGetHeight(imageRef);
     static const NSUInteger bytesPerPixel = 4;
     unsigned char *rawData = malloc(height * width * bytesPerPixel);
     NSUInteger bytesPerRow = bytesPerPixel * width;
@@ -67,9 +77,11 @@ static const NSUInteger NODE_DENSITY = 16;
     CGContextRef context = CGBitmapContextCreate(rawData, width, height, bitsPerComponent, bytesPerRow, colorSpace, kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
     CGColorSpaceRelease(colorSpace);
     
-    CGContextDrawImage(context, CGRectMake(0, 0, width, height), image);
+    CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
     CGContextRelease(context);
     
+    CGFloat widthSpacing = SCREEN_WIDTH/width;
+    CGFloat heightSpacing = SCREEN_HEIGHT/height;
     // rawData now contains the image data in the RGBA8888 pixel format.
     // Create a double array of nodes in the format array[columns][rows]. Bottom left origin.
     for (NSUInteger row = 0; row < height; row += NODE_DENSITY) {
@@ -82,7 +94,7 @@ static const NSUInteger NODE_DENSITY = 16;
             NSUInteger redGreenBlue = rawData[arrayOffset] + rawData[arrayOffset+1] + rawData[arrayOffset+2];
             // Image buffer is y down coordinate space and sprite node is y up.
             // Therefore, the current row is found via (row+currentRow) = height => currentRow = (height-row)
-            PathfindingMapNode* node = [[PathfindingMapNode alloc] initWithPosition:CGPointMake(column, height-row)
+            PathfindingMapNode* node = [[PathfindingMapNode alloc] initWithPosition:CGPointMake(column * widthSpacing, (height-row) * heightSpacing)
                                                                           withScene:self.scene
                                                                        withValidity:(redGreenBlue > 0)];
             [rowNodesArray addObject:node];

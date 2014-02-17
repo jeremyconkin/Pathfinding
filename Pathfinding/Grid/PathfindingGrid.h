@@ -11,6 +11,13 @@
 
 @interface PathfindingGrid : NSObject
 
-- (id)initWithScene:(PathfindingScene*)scene;
+/**
+ * Create the map and show it
+ *
+ * @param scene The scene that holds the grid
+ * @param image Image that makes the map
+ */
+- (id)initWithScene:(PathfindingScene*)scene
+       withMapImage:(UIImage*)image;
 
 @end

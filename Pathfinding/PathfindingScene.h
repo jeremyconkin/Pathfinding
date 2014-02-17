@@ -8,4 +8,11 @@
 
 @interface PathfindingScene : SKScene
 
+/**
+ * Load a map file with an image terrain map
+ *
+ * @param image Image to define the map borders
+ */
+- (void)createGridWithImage:(UIImage*)image;
+
 @end
