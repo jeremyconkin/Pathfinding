@@ -22,8 +22,7 @@
 
 - (id)initWithMapNode:(PathfindingMapNode*)nodeA
      withOtherMapNode:(PathfindingMapNode*)nodeB
-             withCost:(float)cost
-            withScene:(SKScene*)scene{
+             withCost:(float)cost {
     self = [super init];
     
     if(self) {
@@ -35,17 +34,21 @@
         [nodeA addEdge:self];
         [nodeB addEdge:self];
         
-        self.parentScene = scene;
         self.hidden = YES;
         self.lineWidth = 0.75f;
         self.glowWidth = 0.f;
         self.antialiased = NO;
         
         [self createPath];
-        [self drawDebug];
     }
 
     return self;
+}
+
+- (void)setScene:(SKScene *)scene {
+    
+    self.parentScene = scene;
+    [self drawDebug];
 }
 
 - (BOOL)edgeTouchesNode:(PathfindingMapNode*)node {

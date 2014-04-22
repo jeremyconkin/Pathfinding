@@ -14,8 +14,7 @@
 
 - (id)initWithMapNode:(PathfindingMapNode*)nodeA
      withOtherMapNode:(PathfindingMapNode*)nodeB
-             withCost:(float)cost
-            withScene:(SKScene*)scene;
+             withCost:(float)cost;
 
 - (void)markSearched;
 - (void)markPartOfPath;
@@ -26,6 +25,7 @@
 
 - (BOOL)edgeTouchesNode:(PathfindingMapNode*)node;
 - (PathfindingMapNode*)otherNode:(PathfindingMapNode*)fromNode;
+- (void)setScene:(SKScene *)scene;
 
 // From node is used for pathfinding
 @property (weak,nonatomic) PathfindingMapNode* fromNode;

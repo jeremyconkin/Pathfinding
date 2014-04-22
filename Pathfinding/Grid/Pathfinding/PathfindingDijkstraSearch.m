@@ -30,8 +30,7 @@
     [self.searchFrontier addObject:fromNode];
     PathfindingMapEdge* startingEdge = [[PathfindingMapEdge alloc] initWithMapNode:fromNode
                                                       withOtherMapNode:fromNode
-                                                              withCost:0.f
-                                                             withScene:nil];
+                                                              withCost:0.f];
     fromNode.previousEdge = startingEdge;
     
     [self processNode:fromNode];

@@ -31,8 +31,7 @@
     self.searchIdentifier = arc4random();
     PathfindingMapEdge* startingEdge = [[PathfindingMapEdge alloc] initWithMapNode:fromNode
                                                       withOtherMapNode:fromNode
-                                                              withCost:0.f
-                                                             withScene:nil];
+                                                              withCost:0.f];
     [self.edgeStack addObject:startingEdge];
     [self processEdge];
 }

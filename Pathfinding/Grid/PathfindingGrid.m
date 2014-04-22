@@ -154,8 +154,8 @@ static const NSUInteger NODE_DENSITY = 16;
     if (nodeA.isValid && nodeB.isValid) {
         PathfindingMapEdge* edge = [[PathfindingMapEdge alloc] initWithMapNode:nodeA
                                                               withOtherMapNode:nodeB
-                                                                      withCost:cost
-                                                                     withScene:self.scene];
+                                                                      withCost:cost];
+        [edge setScene:self.scene];
     }
 }
 
