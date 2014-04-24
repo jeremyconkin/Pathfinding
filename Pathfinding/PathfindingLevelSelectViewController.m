@@ -117,4 +117,8 @@ static NSString* LEVEL_SELECT_CELL_ID = @"levelSelectCellID";
     [self presentViewController:pathfindingViewController animated:YES completion:Nil];
 }
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 @end

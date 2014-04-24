@@ -37,4 +37,13 @@
     /* Called before each frame is rendered */
 }
 
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    UITouch *touch = [touches anyObject];
+    PathfindingMapNode *tappedNode = [self.grid getMapNodeClosestToPoint:[touch locationInNode:self]];
+    if (tappedNode && tappedNode.isValid) {
+        tappedNode.fillColor = [UIColor blueColor];
+    }
+}
+
 @end
