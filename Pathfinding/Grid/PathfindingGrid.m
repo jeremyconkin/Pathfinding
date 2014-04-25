@@ -12,7 +12,6 @@
 #import "PathfindingDepthFirstSearch.h"
 #import "PathfindingDijkstraSearch.h"
 #import "PathfindingMapEdge.h"
-#import "PathfindingMapNode.h"
 #import "PathfindingScene.h"
 
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.height
@@ -25,6 +24,8 @@
 @property (assign) NSInteger numberOfColumns;
 @property (weak,nonatomic) PathfindingScene* scene;
 @property (strong,nonatomic) NSMutableArray* mapData;
+@property (strong,nonatomic) PathfindingMapNode* startingNode;
+@property (strong,nonatomic) PathfindingMapNode* endingNode;
 
 @end
 
@@ -40,19 +41,42 @@ static const NSUInteger NODE_DENSITY = 16;
         self.scene = scene;
         
         [self parseMapIntoDataArrayWithImage:image];
-        
-        // Hard-coded pathfinding example
-        id<PathfindingPathfinder> search = [[PathfindingAStarSearch alloc] init];
-        NSArray *startingRow = [self.mapData objectAtIndex:5];
-        NSArray *finishingRow = [self.mapData objectAtIndex:10];
-        PathfindingMapNode* nodeA = [startingRow objectAtIndex:10];
-        PathfindingMapNode* nodeB = [finishingRow objectAtIndex:20];
-        nodeB.fillColor = [UIColor purpleColor];
-        [search  pathFromNode:nodeA
-                       toNode:nodeB];
     }
     
     return self;
+}
+
+- (void)setStartingNode:(PathfindingMapNode *)startingNode {
+    _startingNode = startingNode;
+}
+
+- (void)setEndingNode:(PathfindingMapNode *)endingNode {
+    _endingNode = endingNode;
+    [self beginPathfinding];
+}
+
+/**
+ * Execute pathfinding algorithm
+ */
+- (void)beginPathfinding {
+    NSAssert(self.startingNode != nil, @"Must have a start node to begin pathfinding");
+    NSAssert(self.endingNode != nil, @"Must have an end node to begin pathfinding");
+    
+    id<PathfindingPathfinder> search = [[PathfindingAStarSearch alloc] init];
+    [search  pathFromNode:self.startingNode
+                   toNode:self.endingNode];
+}
+
+- (PathfindingMapNode*)getMapNodeClosestToPoint:(CGPoint)searchPoint {
+    
+    CGFloat yPercentage = searchPoint.y / SCREEN_HEIGHT;
+    NSUInteger yIndex = nearbyintf(self.mapData.count - (yPercentage * self.mapData.count));
+    
+    CGFloat xPercentage = searchPoint.x / SCREEN_WIDTH;
+    NSArray *selectedRow = [self.mapData objectAtIndex:yIndex];
+    NSUInteger xIndex = nearbyintf(xPercentage * selectedRow.count);
+    
+    return [selectedRow objectAtIndex:xIndex];
 }
 
 /**

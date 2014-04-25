@@ -11,6 +11,7 @@
 
 @interface PathfindingScene()
 
+/** Map of nodes and edges created from a bmp. Handles its own pathfinding. */
 @property (strong,nonatomic) PathfindingGrid* grid;
 
 @end
@@ -39,10 +40,36 @@
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    UITouch *touch = [touches anyObject];
-    PathfindingMapNode *tappedNode = [self.grid getMapNodeClosestToPoint:[touch locationInNode:self]];
-    if (tappedNode && tappedNode.isValid) {
-        tappedNode.fillColor = [UIColor blueColor];
+    switch (self.gridState) {
+        case GridTapListeningState_StartingNode: {
+            
+            // Find node
+            UITouch *touch = [touches anyObject];
+            PathfindingMapNode *tappedNode = [self.grid getMapNodeClosestToPoint:[touch locationInNode:self]];
+            if (tappedNode && tappedNode.isValid) {
+                [self.grid setStartingNode:tappedNode];
+                tappedNode.fillColor = [UIColor blueColor];
+                [self.delegate didSelectStartingNode];
+            }
+        }
+            break;
+            
+        case GridTapListeningState_EndingNode: {
+            
+            // Find node
+            UITouch *touch = [touches anyObject];
+            PathfindingMapNode *tappedNode = [self.grid getMapNodeClosestToPoint:[touch locationInNode:self]];
+            if (tappedNode && tappedNode.isValid) {
+                [self.grid setEndingNode:tappedNode];
+                tappedNode.fillColor = [UIColor blueColor];
+                [self.delegate didSelectEndingNode];
+            }
+            
+        }
+            break;
+            
+        default:
+            break;
     }
 }
 
