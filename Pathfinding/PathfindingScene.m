@@ -33,6 +33,10 @@
                                           withMapImage:image];
 }
 
+- (void)setAlgorithmIdentifier:(PathfindingAlgorithmIdentifier)algorithmIdentifier {
+    [self.grid setAlgorithmIdentifier:algorithmIdentifier];
+}
+
 - (void)update:(CFTimeInterval)currentTime
 {
     /* Called before each frame is rendered */

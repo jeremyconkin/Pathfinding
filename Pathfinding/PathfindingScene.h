@@ -4,7 +4,7 @@
 //  Created by Jeremy Conkin on 7/7/13.
 //
 
-#import <SpriteKit/SpriteKit.h>
+#import "PathfindingGrid.h"
 
 /** Protocol to receive callbacks from the pathfinding scene */
 @protocol PathfindingSceneDelegate <NSObject>
@@ -37,6 +37,13 @@ typedef enum {
  * @param image Image to define the map borders
  */
 - (void)createGridWithImage:(UIImage*)image;
+
+/**
+ * Set the pathfinding algorithm for the grid to use
+ *
+ * @param algorithmIdentifier Enum for the algorithm to use
+ */
+- (void)setAlgorithmIdentifier:(PathfindingAlgorithmIdentifier)algorithmIdentifier;
 
 /** State for how this grid view responds when tapped */
 @property (assign, nonatomic) GridTapListeningState gridState;

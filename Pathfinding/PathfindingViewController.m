@@ -6,6 +6,8 @@
 //
 
 #import "PathfindingViewController.h"
+
+#import "PathfindingGrid.h"
 #import "PathfindingScene.h"
 
 typedef enum {
@@ -18,7 +20,7 @@ typedef enum {
     
 } PathfindingState;
 
-@interface PathfindingViewController ()<PathfindingSceneDelegate>
+@interface PathfindingViewController ()<PathfindingSceneDelegate, UIActionSheetDelegate>
 
 /** Label giving instructions to the user */
 @property (strong, nonatomic) UILabel *instructionsLabel;
@@ -55,7 +57,7 @@ typedef enum {
     
     [super viewDidAppear:animated];
     [self addInstructionsLabel];
-    self.pathfindingState = PathfindingState_SelectStartNode;
+    self.pathfindingState = PathfindingState_SelectAlgorithm;
 }
 
 /**
@@ -87,19 +89,63 @@ typedef enum {
     _pathfindingState = pathfindingState;
     
     switch (_pathfindingState) {
-        case PathfindingState_SelectStartNode:
-            self.instructionsLabel.text = @"Select Starting Node";
-            self.pathfindingScene.gridState = GridTapListeningState_StartingNode;
+        case PathfindingState_SelectStartNode: {
+                self.instructionsLabel.text = @"Select Starting Node";
+                self.pathfindingScene.gridState = GridTapListeningState_StartingNode;
+            }
             break;
             
-        case PathfindingState_SelectFinishNode:
-            self.instructionsLabel.text = @"Select Ending Node";
-            self.pathfindingScene.gridState = GridTapListeningState_EndingNode;
+        case PathfindingState_SelectFinishNode: {
+                self.instructionsLabel.text = @"Select Ending Node";
+                self.pathfindingScene.gridState = GridTapListeningState_EndingNode;
+            }
+            break;
+            
+        case PathfindingState_SelectAlgorithm: {
+            self.instructionsLabel.text = @"Select Algorithm";
+            UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"Select Algorithm"
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                 destructiveButtonTitle:nil
+                                                      otherButtonTitles:nil];
+            for (NSUInteger i = 0; i < PathfindingAlgorithm_Max; ++i) {
+                [popup addButtonWithTitle:[self getNameForAlgorithm:(PathfindingAlgorithmIdentifier)i]];
+            }
+            [popup showInView:self.view];
+        }
             break;
             
         default:
             break;
     }
+}
+
+- (NSString*)getNameForAlgorithm:(PathfindingAlgorithmIdentifier)algorithmIdentifier {
+    
+    NSString* returnValue = @"";
+    
+    switch (algorithmIdentifier) {
+        case PathfindingAlgorithm_BreadthFirstSearch:
+            returnValue = @"Breadth First Search";
+            break;
+            
+        case PathfindingAlgorithm_DepthFirstSearch:
+            returnValue = @"Depth First Search";
+            break;
+            
+        case PathfindingAlgorithm_Dijkstra:
+            returnValue = @"Dijkstra's";
+            break;
+            
+        case PathfindingAlgorithm_AStar:
+            returnValue = @"A-Star";
+            break;
+            
+        default:
+            break;
+    }
+    
+    return returnValue;
 }
 
 #pragma mark - PathfindingSceneDelegate
@@ -109,7 +155,13 @@ typedef enum {
 }
 
 - (void)didSelectEndingNode {
-    self.pathfindingState = PathfindingState_SelectAlgorithm;
+}
+
+#pragma mark - UIActionSheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    
+    [self.pathfindingScene setAlgorithmIdentifier:(PathfindingAlgorithmIdentifier)buttonIndex];
+    self.pathfindingState = PathfindingState_SelectStartNode;
 }
 
 - (BOOL)shouldAutorotate {

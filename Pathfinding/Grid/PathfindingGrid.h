@@ -9,6 +9,14 @@
 
 #import "PathfindingGrid.h"
 
+typedef enum {
+    PathfindingAlgorithm_DepthFirstSearch,
+    PathfindingAlgorithm_BreadthFirstSearch,
+    PathfindingAlgorithm_Dijkstra,
+    PathfindingAlgorithm_AStar,
+    PathfindingAlgorithm_Max
+}PathfindingAlgorithmIdentifier;
+
 @class PathfindingScene;
 
 @interface PathfindingGrid : NSObject
@@ -44,5 +52,12 @@
  * @param startingNode  Pathfinding node where pathfinding ends
  */
 - (void)setEndingNode:(PathfindingMapNode *)endingNode;
+
+/**
+ * Set the pathfinding algorithm to use
+ *
+ * @param algorithmIdentifier Enum for the algorithm to use
+ */
+- (void)setAlgorithmIdentifier:(PathfindingAlgorithmIdentifier)algorithmIdentifier;
 
 @end

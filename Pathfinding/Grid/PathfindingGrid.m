@@ -26,6 +26,7 @@
 @property (strong,nonatomic) NSMutableArray* mapData;
 @property (strong,nonatomic) PathfindingMapNode* startingNode;
 @property (strong,nonatomic) PathfindingMapNode* endingNode;
+@property (assign,nonatomic) PathfindingAlgorithmIdentifier algorithmIdentifier;
 
 @end
 
@@ -55,6 +56,10 @@ static const NSUInteger NODE_DENSITY = 16;
     [self beginPathfinding];
 }
 
+- (void)setAlgorithmIdentifier:(PathfindingAlgorithmIdentifier)algorithmIdentifier {
+    _algorithmIdentifier = algorithmIdentifier;
+}
+
 /**
  * Execute pathfinding algorithm
  */
@@ -62,9 +67,41 @@ static const NSUInteger NODE_DENSITY = 16;
     NSAssert(self.startingNode != nil, @"Must have a start node to begin pathfinding");
     NSAssert(self.endingNode != nil, @"Must have an end node to begin pathfinding");
     
-    id<PathfindingPathfinder> search = [[PathfindingAStarSearch alloc] init];
+    Class pathfindingClass = [PathfindingGrid getPathfindingClassForIdentifier:self.algorithmIdentifier];
+    id<PathfindingPathfinder> search = [[pathfindingClass alloc] init];
     [search  pathFromNode:self.startingNode
                    toNode:self.endingNode];
+}
+
+/**
+ * Get a pathfinding class via an identifier
+ *
+ * @param identifier    Enum for a pathfinding algorithm
+ * @return Class that implements PathfindingPathfinder
+ */
++ (Class)getPathfindingClassForIdentifier:(PathfindingAlgorithmIdentifier)identifier {
+    
+    switch (identifier) {
+        case PathfindingAlgorithm_DepthFirstSearch:
+            return [PathfindingDepthFirstSearch class];
+            break;
+            
+        case PathfindingAlgorithm_BreadthFirstSearch:
+            return [PathfindingBreadthFirstSearch class];
+            break;
+            
+        case PathfindingAlgorithm_Dijkstra:
+            return [PathfindingDijkstraSearch class];
+            break;
+            
+        case PathfindingAlgorithm_AStar:
+            return [PathfindingAStarSearch class];
+            break;
+            
+        default:
+            return [PathfindingDepthFirstSearch class];
+            break;
+    }
 }
 
 - (PathfindingMapNode*)getMapNodeClosestToPoint:(CGPoint)searchPoint {
